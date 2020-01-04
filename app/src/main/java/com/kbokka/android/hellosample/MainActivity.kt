@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
             val inputString = input.text.toString()
 
-            output.text = inputString + "さん、こんにちは！"
+            output.text = inputString + getString(R.string.tv_hello)
         }
     }
 }
