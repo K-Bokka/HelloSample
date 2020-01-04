@@ -15,9 +15,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val btClick = findViewById<Button>(R.id.btClick)
+        val btClear = findViewById<Button>(R.id.btClear)
         val listener = HelloListener()
 
         btClick.setOnClickListener(listener)
+        btClear.setOnClickListener(listener)
     }
 
     private inner class HelloListener : View.OnClickListener {
@@ -26,9 +28,16 @@ class MainActivity : AppCompatActivity() {
             val input = findViewById<EditText>(R.id.etName)
             val output = findViewById<TextView>(R.id.tvOutput)
 
-            val inputString = input.text.toString()
-
-            output.text = inputString + getString(R.string.tv_hello)
+            when (view.id) {
+                R.id.btClick -> {
+                    val inputString = input.text.toString()
+                    output.text = inputString + getString(R.string.tv_hello)
+                }
+                R.id.btClear -> {
+                    input.setText("")
+                    output.text = ""
+                }
+            }
         }
     }
 }
